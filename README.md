@@ -12,8 +12,15 @@
 - Rake
 - Postgresql
 
+# Current routes
+```
+ # Participants
+ GET /participants #=> returns all participants
+ POST /participants #=> create and returns and participant
+```
+
 # Local development
-Note: This required Ruby, Git and Postgresql installed
+Note: This requires Ruby, Git and Postgresql on your local machine.
 
 Execute the following commands in your terminal.
 1. `$ git clone git@github.com:niiicolai/P2-API.git` to clone the rep.
