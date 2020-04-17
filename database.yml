@@ -1,0 +1,31 @@
+# config for the development database
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: development
+  host: localhost
+  username:
+  password:
+  port: 5432
+# config for the test database
+# not really necessary since we aren't
+# going to write any unit or integration test
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: test
+  pool: 5
+  host: localhost
+  username: postgres
+  password:
+  port: 5432
+# config for the production database
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: production
+  pool: 5
+  host: localhost
+  username: postgres
+  password:
+  port: 5432
