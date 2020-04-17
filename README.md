@@ -16,7 +16,7 @@
 ```
  # Participants
  GET /participants #=> returns all participants
- POST /participants #=> create and returns and participant
+ POST /participant #=> create and returns and participant
 ```
 
 # Local development
