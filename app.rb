@@ -1,7 +1,7 @@
 # Require the necessary libraries and models
 require 'sinatra'
 require 'sinatra/activerecord'
-require '.models/participant'
+require './models/participant'
 
 # set the path to the database configuration
 # for active record
