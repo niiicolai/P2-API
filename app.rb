@@ -40,25 +40,25 @@ post "/participant" do
 end
 
 post "/failed_activity" do
-  participant = Participant.find(params[:id])
-  participant.failed_activities.create(activity_id: params[:activity_id])
+  participant = Participant.find(params["id"])
+  participant.failed_activities.create(activity_id: params["activity_id"])
 
   {message: "OK"}.to_json
 end
 
 post "/completed_activity" do
-  participant = Participant.find(params[:id])
-  participant.completed_activities.create(activity_id: params[:activity_id])
+  participant = Participant.find(params["id"])
+  participant.completed_activities.create(activity_id: params["activity_id"])
 
   {message: "OK"}.to_json
 end
 
 post "/interaction" do
-  participant = Participant.find(params[:id])
+  participant = Participant.find(params["id"])
   interaction = participant.interactions.create(
-    date_created: params[:dateCreated],
-    method: params[:method],
-    message: params[:message]
+    date_created: params["dateCreated"],
+    method: params["method"],
+    message: params["message"]
   )
 
   {message: "OK"}.to_json
@@ -66,11 +66,11 @@ end
 
 post "/ratings" do
   participant = Participant.find(params[:id])
-  params[:ratings].each do |r|
+  params["ratings"].each do |r|
     participant.ratings.create(
-      date_created: r[:dateCreated],
-      question: r[:question],
-      rate: r[:rate]
+      date_created: r["dateCreated"],
+      question: r["question"],
+      rate: r["rate"]
     )
   end
 
