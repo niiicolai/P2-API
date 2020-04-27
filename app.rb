@@ -7,8 +7,11 @@ require './models/failed_activity'
 require './models/interaction'
 require './models/rating'
 
+require 'rack'
+require 'rack/contrib'
 # set the path to the database configuration
 # for active record
+use Rack::JSONBodyParser
 set :database_file, "database.yml"
 
 # A before filter that is called

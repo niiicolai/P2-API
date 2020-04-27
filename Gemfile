@@ -7,7 +7,9 @@ source "https://rubygems.org"
 
 # Necessary to require sinatra
 # in the application
-gem 'sinatra'
+gem 'sinatra', ">2.0"
+gem 'rack', ">2.0"
+gem 'rack-contrib', ">2.0"
 # Used to enable active record
 # that enables the possibility
 # to modify the database using
