@@ -24,12 +24,12 @@ end
 
 # Just for example
 # Returns all participants
-# get '/participants' do
+get '/participants' do
   # Get all participants
-  # participants = Participant.all
+  participants = Participant.all
   # Return the participants as json
-  # participants.to_json
-# end
+  participants.to_json
+end
 
 # Creates a new participant
 post "/participant" do
