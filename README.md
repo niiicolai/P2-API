@@ -1,9 +1,7 @@
 # P2 API
-<<<<<<< HEAD
 ### Language: Ruby v. 2.7.0
 ### Framework: Sinatra
 ### [Get participants test url](https://codename-api-impossible.herokuapp.com/participants)
-=======
 
 # General details
 - Language: Ruby v. 2.7.0
@@ -19,9 +17,11 @@
 
 # Current routes
 ```
- # Participants
- GET /participants #=> returns all participants
- POST /participant #=> create and returns and participant
+ POST /participant #=> create participant and returns participant id
+ POST /failed_activity #=> add failed activity to participant
+ POST /completed_activity #=> add completed activity to participant
+ POST /interaction #=> add interaction to participant
+ POST /rating #=> add rating to participant
 ```
 
 # Local development
@@ -34,4 +34,4 @@ Execute the following commands in your terminal.
 4. `$ rake db:create` to create the database
 5. `$ rake db:migrate` to migrate database changes
 6. `$ ruby app.rb` to start the application
->>>>>>> 1845e4a8d85c4e6e02af0b9e5591717608a374a6
+
