@@ -2,6 +2,10 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require './models/participant'
+require './models/completed_activity'
+require './models/failed_activity'
+require './models/interaction'
+require './models/rating'
 
 # set the path to the database configuration
 # for active record
@@ -15,20 +19,58 @@ before do
   content_type :json
 end
 
+# Just for example
 # Returns all participants
-get '/participants' do
+# get '/participants' do
   # Get all participants
-  participants = Participant.all
+  # participants = Participant.all
   # Return the participants as json
-  participants.to_json
-end
+  # participants.to_json
+# end
 
 # Creates a new participant
-post "/participants" do
+post "/participant" do
   # Create an instance of a new participant
   # and instantly save it to the database
   # by using .create instead of .new
   participant = Participant.create
+
   # return the new participant as json
   participant.to_json
+end
+
+post "/failed_activity" do
+  participant = Participant.find(params[:id])
+  participant.failed_activities.create(activity_id: params[:activity_id])
+  
+  {message: "OK"}.to_json
+end
+
+post "/completed_activity" do
+  participant = Participant.find(params[:id])
+  participant.completed_activities.create(activity_id: params[:activity_id])
+
+  {message: "OK"}.to_json
+end
+
+post "/interaction" do
+  participant = Participant.find(params[:id])
+  interaction = participant.interactions.create(
+    date_created: params[:dateCreated],
+    method: a[:method],
+    message: a[:message]
+  )
+
+  {message: "OK"}.to_json
+end
+
+post "/ratings" do
+  participant = Participant.find(params[:id])
+  rating = participant.ratings.create(
+    date_created: params[:dateCreated],
+    question: a[:question],
+    rate: a[:rate]
+  )
+
+  {message: "OK"}.to_json
 end

@@ -1,3 +1,6 @@
 class Participant < ActiveRecord::Base
-  # The participant model
+  has_many :completed_activities
+  has_many :failed_activities
+  has_many :interactions
+  has_many :ratings
 end
