@@ -27,8 +27,20 @@ end
 get '/participants' do
   # Get all participants
   participants = Participant.all
+
+  data = []
   # Return the participants as json
-  participants.to_json
+  participants.each_with_index do |participant, index|
+    data[index] = {
+      participant: participant.to_json,
+      failed_activities: participant.failed_activities.to_json,
+      completed_activities: participant.completed_activities.to_json,
+      interactions: participant.interactions.to_json,
+      ratings: participant.ratings.to_json
+    }
+  end
+
+  data.to_json
 end
 
 # Creates a new participant
@@ -36,7 +48,7 @@ post "/participant" do
   # Create an instance of a new participant
   # and instantly save it to the database
   # by using .create instead of .new
-  participant = Participant.create
+  participant = Participant.create(date_created: DateTime.now)
 
   # return the new participant as json
   participant.to_json
