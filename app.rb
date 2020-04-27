@@ -57,20 +57,22 @@ post "/interaction" do
   participant = Participant.find(params[:id])
   interaction = participant.interactions.create(
     date_created: params[:dateCreated],
-    method: a[:method],
-    message: a[:message]
+    method: params[:method],
+    message: params[:message]
   )
 
   {message: "OK"}.to_json
 end
 
-post "/rating" do
+post "/ratings" do
   participant = Participant.find(params[:id])
-  rating = participant.ratings.create(
-    date_created: params[:dateCreated],
-    question: a[:question],
-    rate: a[:rate]
-  )
+  params[:ratings].each do |r|
+    participant.ratings.create(
+      date_created: r[:dateCreated],
+      question: r[:question],
+      rate: r[:rate]
+    )
+  end
 
   {message: "OK"}.to_json
 end
