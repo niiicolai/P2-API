@@ -10,12 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_232314) do
+ActiveRecord::Schema.define(version: 2020_04_27_011746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "completed_activities", force: :cascade do |t|
+    t.integer "activity_id"
+    t.bigint "participant_id"
+    t.index ["participant_id"], name: "index_completed_activities_on_participant_id"
+  end
+
+  create_table "failed_activities", force: :cascade do |t|
+    t.integer "activity_id"
+    t.bigint "participant_id"
+    t.index ["participant_id"], name: "index_failed_activities_on_participant_id"
+  end
+
+  create_table "interactions", force: :cascade do |t|
+    t.string "date_created"
+    t.string "method"
+    t.string "message"
+    t.bigint "participant_id"
+    t.index ["participant_id"], name: "index_interactions_on_participant_id"
+  end
+
   create_table "participants", force: :cascade do |t|
+    t.string "date_created"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.string "date_created"
+    t.string "question"
+    t.integer "rate"
+    t.bigint "participant_id"
+    t.index ["participant_id"], name: "index_ratings_on_participant_id"
   end
 
 end
