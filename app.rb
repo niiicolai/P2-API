@@ -22,6 +22,17 @@ before do
   content_type :json
 end
 
+get '/participants_delete' do
+  # delete everything 
+  Participant.delete_all
+  CompletedActivity.delete_all
+  FailedActivity.delete_all
+  Interaction.delete_all
+  Rating.delete_all
+
+  {message: "OK"}.to_json
+end
+
 # Just for example
 # Returns all participants
 get '/participants' do
